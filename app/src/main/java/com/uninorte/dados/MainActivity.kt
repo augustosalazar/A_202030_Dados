@@ -1,9 +1,11 @@
 package com.uninorte.dados
 
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
@@ -21,8 +23,16 @@ class MainActivity : AppCompatActivity() {
         val valorDado = dado.lanzar()
         // el método findById permite conectar una instancia de TextView con nuestra variable
         // el Id es el mismo que declaramos en el Layout
-        val tvValorDado: TextView = findViewById(R.id.textView)
-        tvValorDado.text = valorDado.toString()
+        val imagenDado: ImageView = findViewById(R.id.imageView)
+        // dependiendo del valor del dado cargamos el recurso
+        when (valorDado) {
+            1 -> imagenDado.setImageResource(R.drawable.dice_1)
+            2 -> imagenDado.setImageResource(R.drawable.dice_2)
+            3 -> imagenDado.setImageResource(R.drawable.dice_3)
+            4 -> imagenDado.setImageResource(R.drawable.dice_4)
+            5 -> imagenDado.setImageResource(R.drawable.dice_5)
+            6 -> imagenDado.setImageResource(R.drawable.dice_6)
+        }
     }
 
     // método que se llama cada vez que se presiona el botón
